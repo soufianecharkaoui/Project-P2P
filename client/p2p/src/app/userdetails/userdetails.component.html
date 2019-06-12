@@ -1,0 +1,31 @@
+<section>
+  <div class="container">
+    <div class="card card-profile shadow">
+      <div class="px-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <img src="{{baseURL + 'images/' + user.profilePic}}" class="rounded-circle img-center img-fluid shadow shadow-lg--hover">
+            </div>
+          </div>
+          <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+            <div class="card-profile-actions py-4 mt-lg-0">
+              <a href='https://localhost:8443' class="btn btn-sm btn-info mr-4"><i class="fas fa-video"></i> Video Call</a>
+              <a [routerLink]="['/chat', user._id]" class="btn btn-sm btn-default float-right"><i class="fas fa-comment-dots"></i> Message</a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+        </div>
+        <div class="mt-5 py-5 border-top text-center">
+          <div class="row justify-content-center">
+            <div class="col-lg-9">
+              <p>{{ user.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

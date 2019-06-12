@@ -1,0 +1,14 @@
+<section>
+  <div class="container">
+    <div class="card-columns">
+      <div *ngFor="let user of users" class="card card-lift--hover rounded shadow-lg mt-4">
+        <img class="card-header img-fluid" src="{{baseURL + 'images/' + user.profilePic}}" alt={{user.username}}>
+        <div class="card-body text-center">
+          <h4 class="card-title">{{ user.firstname }} {{ user.lastname }}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ user.username }}</h6>
+          <a [routerLink]="['/userdetails', user._id]" class="btn btn-outline-warning">View Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

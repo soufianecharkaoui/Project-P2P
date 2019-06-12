@@ -1,0 +1,14 @@
+section {
+    background-image: url(../../assets/img/theme/abstract-painting-close-up-colors-1932264.jpg);
+    background-size: 100% 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%,-30%);
+    position: absolute;
+    transition: all .15s ease;
+}

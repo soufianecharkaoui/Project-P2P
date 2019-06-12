@@ -1,0 +1,62 @@
+<nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark">
+  <div class="container">
+    <div class="col-6 collapse-brand">
+      <a routerLink="/home">
+        <img src="assets/img/brand/logo-p2p.png" height="50" width="50"/>
+        <span class="display-4" style="color: white;">P2P</span>
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbar-default" (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-default" [ngbCollapse]="isCollapsed">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a routerLink="/home">
+              <img src="assets/img/brand/logo-p2p.png" />
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" aria-controls="navbar-default" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!user">
+        <button class="btn Btn" routerLink="/login">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+        <button class="btn Btn" routerLink="/signup">
+          <i class="fas fa-user-plus"></i> Sign up
+        </button>
+      </div>
+      <ul *ngIf="user" class="navbar-nav ml-lg-auto">
+        <li class="" ngbDropdown>
+            <img src="{{baseURL + 'images/' + user.profilePic}}" class="userBtn" height="50" width="50" aria-haspopup="true" id="navbarDropdownMenuLink2" ngbDropdownToggle/>
+          <ul class="" aria-labelledby="navbarDropdownMenuLink2" ngbDropdownMenu>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/userdetails', user._id]">
+                <i class="far fa-user"></i> {{ user.firstname }} {{ user.lastname }}
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/users">
+                <i class="fas fa-users"></i> Users
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

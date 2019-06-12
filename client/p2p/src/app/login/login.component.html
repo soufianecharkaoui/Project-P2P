@@ -1,0 +1,60 @@
+<main>
+  <section class="view">
+
+      <div class="row justify-content-center">
+
+        <div class="col-lg-6">
+          <img src="../../assets/img/theme/undraw_mobile_login_ikmv.svg" class="img-fluid" alt="Login">
+        </div>
+        <div class="col-lg-6 justify-content-center">
+          <div class="card ml-5 mt-5 bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center text-muted mb-4">
+                <h3>Login</h3>
+              </div>
+              <form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" [(ngModel)]="user.username" name="username"
+                    #username="ngModel" required placeholder="Username" type="text" (focus)="focus=true" (blur)="focus=false">
+                  </div>
+                  <br>
+                  <div class="alert alert-warning" *ngIf="username.invalid && (username.dirty || username.touched)">
+                    <div *ngIf="username.errors.required">Username is required.</div>
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password"
+                    #password="ngModel" required type="password" (focus)="focus1=true" (blur)="focus1=false">
+                  </div>
+                  <br>
+                  <div class="alert alert-warning" *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div *ngIf="password.errors.required">Password is required.</div>
+                    <div *ngIf="password.errors.minLength">Password should contain at least 8 characters.</div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn my-4" [disabled]="loginForm.form.invalid">Sign in</button>
+                </div>
+              </form>
+              <div class="row mt-3">
+                <div class="col text-center">
+                  <a routerLink="/signup" class="text-dark text-muted">
+                    <small>Create new account</small>
+                  </a>
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </section>
+</main>

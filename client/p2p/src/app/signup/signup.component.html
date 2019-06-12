@@ -1,0 +1,146 @@
+<main>
+  <section class="view mb-5">
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-white pb-5">
+            <div class="text-muted text-center mb-3">
+              <h3>Sign up</h3>
+            </div>
+          </div>
+          <div class="card-body px-lg-5 py-lg-5" *ngIf="signUpForm">
+            <form novalidate #sform="ngForm" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-sm-6">
+                  <!--Username-->
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="username" required placeholder="Username" type="text" (focus)="focus=true" (blur)="focus=false">
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" *ngIf="username.invalid && (username.dirty || username.touched)">
+                      <div *ngIf="username.errors.required">Username is required.</div>
+                    </div>
+                  </div>
+                  <!--Password-->
+                  <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Password" formControlName="password" minlength="8" required type="password" (focus)="focus1=true" (blur)="focus1=false">
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" *ngIf="password.invalid && (password.dirty || password.touched)">
+                      <div *ngIf="password.errors.required">Password is required.</div>
+                      <div *ngIf="password.errors.minLength">Password should contain at least 8 characters.</div>
+                    </div>
+                  </div>
+                  <!--Confirm Password-->
+                  <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" pattern="{{password.value}}" required type="password" (focus)="focus1=true" (blur)="focus1=false">
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                      <div *ngIf="confirmPassword.errors.required">Confirm Password is required.</div>
+                      <div *ngIf="confirmPassword.errors.minLength">Confirm Password should contain at least 8 characters.</div>
+                      <div *ngIf="confirmPassword.errors.pattern">Confirm password and Password doesn't match.</div>
+                    </div>
+                  </div>
+                  <!--First Name-->
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="firstname" required placeholder="First name" type="text" (focus)="focus=true" (blur)="focus=false">
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                      <div *ngIf="firstname.errors.required">Your profile picture is required.</div>
+                    </div>
+                  </div>
+                  <!--Last Name-->
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="lastname" required placeholder="Last name" type="text" (focus)="focus=true" (blur)="focus=false">
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                      <div *ngIf="lastname.errors.required">Last name is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <!--Description-->
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                      </div>
+                      <textarea class="form-control form-control-alternative" formControlName="description" required rows="2" placeholder="Describe yourself ..."></textarea>                  
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" *ngIf="description.invalid && (description.dirty || description.touched)">
+                      <div *ngIf="description.errors.required">A description is required.</div>
+                    </div>
+                  </div>
+                  <!--Birthday-->
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                      </div>
+                      <input class="form-control datepicker" formControlName="birthday" required placeholder="Your birthday" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text" (focus)="focus=true" (blur)="focus=false">
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)">
+                      <div *ngIf="birthday.errors.required">Your birthday is required.</div>
+                    </div>
+                  </div>
+                  <!--Profile Picture-->
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="text-muted ml-2">
+                      <label><i class="fas fa-user-circle pr-2 pl-2"></i>Your profile picture :</label>
+                    </div>
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                      </div>
+                      <input class="form-control" formControlName="profilePic" (change)="onFileChanged($event)" type="file" (focus)="focus=true" (blur)="focus=false">
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" *ngIf="profilePic.invalid && (profilePic.dirty || profilePic.touched)">
+                      <div *ngIf="profilePic.errors.required">Profile picture is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Submit Button-->
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary my-4" [disabled]="sform.invalid">Sign Up</button>
+              </div>
+            </form>
+            <div class="row mt-3">
+              <div class="col text-center">
+                <a routerLink="/login" class="text-dark text-muted">
+                  <small>Already have an account ?</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
